@@ -431,6 +431,147 @@ body{
 
 }
 
+
+.get-started-form{
+  width: 400px;
+  height: 500px;
+  border-radius: 2px;
+  box-shadow: 0 12px 24px 0 rgba(0 , 0, 0, 0.2);
+  background-color: #ffffff;
+  margin-top: auto;
+  margin-bottom: auto;
+  position: relative;
+  top: -2px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+
+  .get-started-form-content{
+    margin-left: 30px;
+    margin-right: 30px;
+    margin-top: 40px;
+
+    .get-started-prompt{
+
+      h2{
+        margin-top: 0;
+        margin-bottom: 5px;
+        height: 24px;
+        font-family: 'proximanova', sans-serif;
+        font-size: 20px;
+        font-weight: normal;
+        font-style: normal;
+        font-stretch: normal;
+        line-height: normal;
+        letter-spacing: -0.4px;
+        text-align: left;
+        color: #283647;
+      }
+  
+      p{
+        width: 320px;
+        height: 60px;
+        font-family: 'proximanova', sans-serif;
+        font-size: 14px;
+        font-weight: normal;
+        font-style: normal;
+        font-stretch: normal;
+        line-height: 1.43;
+        letter-spacing: -0.2px;
+        text-align: left;
+        color: #798898;
+        margin-top: 0;
+      }
+
+      border-bottom: 1px solid #e2e6eb;
+      margin-bottom: 20px;
+    }
+
+    .get-started-input{
+      display:flex;
+      flex-direction: rows;
+      flex-wrap: wrap;
+      width: 400px;
+
+      .name-input{
+        width: 146px;
+        height: 46px;
+        font-family: 'proximanova', sans-serif;
+        font-size: 14px;
+        padding-left: 15px;
+        margin-right: 10px;
+        margin-bottom: 10px;
+      }
+
+      input:placeholder-shown {
+        opacity: 0.5;
+      }
+
+      .display-name{
+        width: 321px;
+        height: 46px;
+        margin-bottom: 10px;
+        padding-left: 15px;
+        font-family: 'proximanova', sans-serif;
+        font-size: 14px;
+      }
+
+      .password{
+        width: 321px;
+        height: 46px;
+        margin-bottom: 10px;
+        padding-left: 15px;
+        font-family: 'proximanova', sans-serif;
+        font-size: 14px;
+      }
+
+      .company-name{
+        width: 321px;
+        height: 46px;
+        margin-bottom: 20px;
+        padding-left: 15px;
+        font-family: 'proximanova', sans-serif;
+        font-size: 14px;
+      }
+
+      .signup-button-div{
+        display: flex;
+        flex-direction: row;
+        justify-content: flex-end;
+        width: 340px;
+      }
+
+      .get-started-signup{
+        align-self: flex-end;
+        width: 150px;
+        height: 50px;
+        border-radius: 100px;
+        border: solid 1px #e2e6eb;
+        background-color: #2c9db7;
+      }
+
+      .get-started-signup-text{
+        text-transform: uppercase;
+        font-family: 'proximanova', sans-serif;
+        font-size: 13px;
+        font-weight: bold;
+        font-style: normal;
+        font-stretch: normal;
+        line-height: normal;
+        letter-spacing: 0.2px;
+        text-align: center;
+        color: #ffffff;
+      }
+
+
+    }
+
+
+
+  }
+
+}
+
 .terms-link{
   font-family: 'proximanova', sans-serif;
   width: 364px;
@@ -450,4 +591,184 @@ body{
     text-decoration: none;
     font-weight: bold;
   }
+}
+
+.terms-link-non-existing{
+  font-family: 'proximanova', sans-serif;
+  width: 364px;
+  height: 17px;
+  font-size: 14px;
+  font-weight: normal;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: normal;
+  letter-spacing: -0.2px;
+  text-align: left;
+  color: #e2e6eb;
+  position: relative;
+  top: -80px;
+  a{
+    color: #e2e6eb;
+    text-decoration: none;
+    font-weight: bold;
+  }
+}
+
+.company-signup-form{
+  width: 400px;
+  // height: 428px;
+  border-radius: 2px;
+  box-shadow: 0 12px 24px 0 rgba(0 , 0, 0, 0.2);
+  background-color: #ffffff;
+  margin-top: auto;
+  margin-bottom: auto;
+  position: relative;
+  top: -2px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+
+  .company-signup-form-content{
+    margin-left: 30px;
+    margin-right: 30px;
+    margin-top: 40px;
+
+    .company-signup-prompt{
+
+      h2{
+        margin-top: 0;
+        margin-bottom: 5px;
+        height: 24px;
+        font-family: 'proximanova', sans-serif;
+        font-size: 20px;
+        font-weight: normal;
+        font-style: normal;
+        font-stretch: normal;
+        line-height: normal;
+        letter-spacing: -0.4px;
+        text-align: left;
+        color: #283647;
+      }
+  
+      p{
+        width: 320px;
+        height: 60px;
+        font-family: 'proximanova', sans-serif;
+        font-size: 14px;
+        font-weight: normal;
+        font-style: normal;
+        font-stretch: normal;
+        line-height: 1.43;
+        letter-spacing: -0.2px;
+        text-align: left;
+        color: #798898;
+        margin-top: 0;
+      }
+
+      border-bottom: 1px solid #e2e6eb;
+      margin-bottom: 20px;
+
+
+    }
+
+    .company-signup-input{
+
+      .radio-selected-email, .radio-deactivated-email{
+        margin-right: 18px;
+      }
+
+      .radio-selected-invite, .radio-deactivated-invite{
+        margin-right: 18px;
+      }
+
+      .any-email{
+
+        display:flex;
+        flex-direction: row;
+        justify-content: flex-start;
+        align-items: center;
+        margin-bottom: 22px;
+
+        .any-domain-text{
+
+        }
+
+      }
+
+      .domain-input{
+
+        // width: 336px;
+        // height: 46px;
+        // border-radius: 2px;
+        // border: solid 1px #e2e6eb;
+
+        .domain-text-input{
+
+          width: 321px;
+          height: 46px;
+          border-radius: 2px;
+          border: solid 1px #e2e6eb;
+
+          padding-left: 15px;
+          font-family: 'proximanova', sans-serif;
+          font-size: 14px;
+
+        }
+        
+      }
+
+      .invite-only-input{
+
+        display:flex;
+        flex-direction: row;
+        justify-content: flex-start;
+        align-items: center;
+        margin-top: 20px;
+        margin-bottom: 30px;
+
+        .invite-only-text{
+
+        }
+
+      }
+
+    }
+
+    .company-signup-done-div{
+
+      display: flex;
+      flex-direction: row;
+      justify-content: flex-end;
+      margin-bottom: 40px;
+      
+      .company-signup-done{
+
+        width: 150px;
+        height: 50px;
+        border-radius: 100px;
+        border: solid 1px #e2e6eb;
+        background-color: #2c9db7;
+
+        .company-signup-done-text{
+
+          text-transform: uppercase;
+          font-family: 'proximanova', sans-serif;
+          font-size: 13px;
+          font-weight: bold;
+          font-style: normal;
+          font-stretch: normal;
+          line-height: normal;
+          letter-spacing: 0.2px;
+          text-align: center;
+          color: #ffffff;
+
+
+        }
+
+      }
+
+    }
+
+  }
+
 }

@@ -2,6 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import Index from './containers/index';
 import JoinTeam from './containers/join-team';
+import NonExisting from './containers/non-existing';
 import './index.scss';
 import { Route, Link, BrowserRouter as Router } from 'react-router-dom';
 
@@ -10,6 +11,7 @@ const routing = (
         <div>
             <Route exact path="/" component={Index} />
             <Route exact path="/jointeam" component={JoinTeam} />
+            <Route exact path="/nonexisting" component={NonExisting} />
         </div>
     </Router>
 )
