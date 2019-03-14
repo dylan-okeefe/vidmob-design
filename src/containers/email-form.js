@@ -8,7 +8,8 @@ export default class Form extends Component {
         this.state = {
             email: '',
             submitted: false,
-            familiarAlertDisplay: false
+            familiarAlertDisplay: false,
+            alreadyTaken: false
         }
 
         this.onEmailChange = this.onEmailChange.bind(this);
@@ -19,7 +20,12 @@ export default class Form extends Component {
 
     onEmailChange(e){
         this.setState({ email: e.target.value })
-        console.log(this.state);
+
+        if(e.target.value === 'used@email.com'){
+            this.setState({alreadyTaken: true})
+        } else {
+            this.setState({alreadyTaken: false})
+        }
     }
 
     onSubmit(e){
@@ -42,7 +48,10 @@ export default class Form extends Component {
                         <h2>Get Started on VidMob</h2>
                         <p>Enter your work email.</p>
                     </div>
+                    {/* <div className="email-taken-error">
+                    </div> */}
                     <div className="input">
+                        {this.state.alreadyTaken && this.renderEmailTakenAlert()}
                         <form onSubmit={this.onSubmit}>
                             <label>
                                 <input type="text" placeholder="name@company.com" className="email-input" value={this.state.email} onChange={this.onEmailChange}/>
@@ -58,6 +67,16 @@ export default class Form extends Component {
                 {displayAlert}
                 {displayOverlay}
 
+            </div>
+        )
+    }
+
+    renderEmailTakenAlert(){
+        return(
+            <div className="email-taken-error">
+                <div className="email-taken-error-text">
+                    That email looks like it's already taken. Do you want to <a href="/">login</a> or <a href="/">reset your password</a>?
+                </div>
             </div>
         )
     }

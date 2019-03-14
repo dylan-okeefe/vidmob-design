@@ -39,6 +39,11 @@ export default class GetStarted extends Component{
 
     onCompanyNameChange(e){
         this.setState({companyName: e.target.value})
+        if(e.target.value === 'Existing Company'){
+            this.setState({existingCompany: true})
+        } else {
+            this.setState({existingCompany: false});
+        }
     }
 
     onSubmit(e){
@@ -56,6 +61,7 @@ export default class GetStarted extends Component{
                             <p>Your email wasn't associated with an existing company. Fill out the information below to create a new one.</p>
                         </div>
                         <div className="get-started-input">
+                            {this.state.existingCompany && this.renderCompanyExistsAlert()}
                             <form onSubmit={this.onSubmit}>
                                 <input type="text" className="name-input" placeholder="First Name" value={this.state.firstName} onChange={this.onFirstNameChange}></input>
                                 <input type="text" className="name-input" placeholder="Last Name" value={this.state.lastName} onChange={this.onLastNameChange}></input>
@@ -73,6 +79,16 @@ export default class GetStarted extends Component{
                         </div>
                     </div>
                 </div>
+        )
+    }
+
+    renderCompanyExistsAlert(){
+        return(
+            <div className="company-exists-error">
+                <div className="company-exists-error-text">
+                    That company looks like it already exists. Try to <a href="/">Find My Team</a> using your work email.
+                </div>
+            </div>
         )
     }
 }

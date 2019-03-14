@@ -11,10 +11,10 @@ export default class FamiliarAlert extends Component{
 
     }
 
-    render(){
+    renderPrompt(){
         return (
             <div className="familiar-alert">
-            <span onClick={this.props.onFamiliarAlertClose}>
+            <span onClick={this.props.onFamiliarAlertClose()}>
                 <div className="close">
                     <div className="close-text">
                         Close
@@ -35,9 +35,4 @@ export default class FamiliarAlert extends Component{
         )
     }
 
-    // renderOverlay(){
-    //     return(
-    //         <div className="alert-overlay"></div>
-    //     )
-    // }
 }

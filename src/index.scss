@@ -136,6 +136,55 @@ body{
       margin-bottom: 20px;
     }
 
+    .email-taken-error{
+      width: 200px;
+      height: 83px;
+      border-radius: 2px;
+      background-color: #de5454;
+      position: absolute;
+      left: 101px;
+      top: 36px;
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+      align-items: center;
+      
+      .email-taken-error-text{
+        width: 170px;
+        font-size: 12px;
+        font-weight: normal;
+        font-style: normal;
+        font-stretch: normal;
+        line-height: 1.33;
+        letter-spacing: -0.2px;
+        text-align: center;
+        color: #ffffff;
+        text-align: center;
+
+        a{
+          text-decoration: none;
+          font-weight: bold;
+          color: #ffffff;
+        }
+      }
+  
+    }
+
+    .email-taken-error:after {
+      top: 100%;
+      left: 50%;
+      border: solid transparent;
+      content: " ";
+      height: 0;
+      width: 0;
+      position: absolute;
+      pointer-events: none;
+      border-color: rgba(207, 54, 54, 0);
+      border-top-color: #de5454;
+      border-width: 6px;
+      margin-left: -6px;
+    }
+
     .input{
 
       display: flex;
@@ -492,7 +541,57 @@ body{
       flex-direction: rows;
       flex-wrap: wrap;
       width: 400px;
-
+  
+      
+      
+      .company-exists-error{
+        width: 200px;
+        height: 83px;
+        border-radius: 2px;
+          background-color: #de5454;
+          position: absolute;
+          left: 101px;
+          top: 261px;
+          display: flex;
+          flex-direction: row;
+          justify-content: center;
+          align-items: center;
+          z-index: 10;
+          
+          .company-exists-error-text{
+            width: 170px;
+            font-size: 12px;
+          font-weight: normal;
+          font-style: normal;
+          font-stretch: normal;
+          line-height: 1.33;
+          letter-spacing: -0.2px;
+          text-align: center;
+          color: #ffffff;
+          text-align: center;
+  
+          a{
+            text-decoration: none;
+            font-weight: bold;
+            color: #ffffff;
+          }
+        }
+      }
+      
+      .company-exists-error:after {
+        top: 100%;
+        left: 50%;
+        border: solid transparent;
+        content: " ";
+        height: 0;
+        width: 0;
+        position: absolute;
+        pointer-events: none;
+        border-color: rgba(207, 54, 54, 0);
+        border-top-color: #de5454;
+        border-width: 6px;
+        margin-left: -6px;
+      }
       .name-input{
         width: 146px;
         height: 46px;
@@ -788,10 +887,9 @@ body{
             padding: 0;
           }
 
-          .domain-list-item:nth-last-child(1){
-            margin-bottom: 9px;
+          .last-line-item{
+            margin-bottom: 11px;
           }
-
 
         }
 
