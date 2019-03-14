@@ -13,6 +13,7 @@ export default class Root extends Component {
             existingCompany: false,
             modeJoin: false,
             // modeJoin: true, //just for testing
+            email: '',
             firstName: '',
             lastName: '',
             displayName: '',

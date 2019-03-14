@@ -66,7 +66,8 @@ export default class Form extends Component {
                 </div>
                 {displayAlert}
                 {displayOverlay}
-
+                {this.renderPersonal()}
+                <div className="alert-overlay"></div>
             </div>
         )
     }
@@ -76,6 +77,31 @@ export default class Form extends Component {
             <div className="email-taken-error">
                 <div className="email-taken-error-text">
                     That email looks like it's already taken. Do you want to <a href="/">login</a> or <a href="/">reset your password</a>?
+                </div>
+            </div>
+        )
+    }
+
+    renderPersonal(){
+        return(
+            <div className="personal-alert">
+                <h2 className="personal-header">
+                    That looks lke a personal email
+                </h2>
+                <div className="personal-text">
+                    Press continue to create a new team, or go back to try finding your team instead.
+                </div>
+                <div className="personal-buttons">
+                    <button type="submit" value="Next" className="personal-button-back">
+                                <span className="personal-button-back-text">
+                                    Back
+                                </span>
+                    </button>
+                    <button type="submit" value="Next" className="personal-button-continue">
+                                <span className="personal-button-continue-text">
+                                    Continue
+                                </span>
+                    </button>
                 </div>
             </div>
         )
