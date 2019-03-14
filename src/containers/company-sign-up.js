@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import radioSelected from '../assets/ct-radio-selected.svg';
 import radioDeactivated from '../assets/ct-radio-deactivated.svg';
+import TagInput from './domain-input';
 
 export default class CompanySignup extends Component{
 
@@ -26,6 +27,11 @@ export default class CompanySignup extends Component{
 
     }
 
+    onDomainArrChange = (domains) => {
+        console.log(domains)
+        this.setState({domains: domains});
+    }
+
     render(){
         let anyEmailRadio = this.state.anyFromDomains ? <img src={radioSelected} className="radio-selected-email"></img> : <img src={radioDeactivated} onClick={this.onSelectDomains} className="radio-deactivated-email"/>
         let inviteOnlyRadio = this.state.inviteOnly ? <img src={radioSelected} className="radio-selected-invite"></img> : <img src={radioDeactivated} onClick={this.onSelectInviteOnly} className="radio-deactivated-invite"/>
@@ -44,9 +50,10 @@ export default class CompanySignup extends Component{
                                 Any email from my domains
                             </div>
                         </div>
-                        <div className="domain-input">
-                            {domainTextInput}
-                        </div>
+                        {/* <div className="domain-input"> */}
+                            {/* {domainTextInput} */}
+                            <TagInput emailIsSelected={this.state.anyFromDomains} onDomainArrChange={this.onDomainArrChange}/>
+                        {/* </div> */}
                         <div className="invite-only-input">
                             {inviteOnlyRadio}
                             <div className="invite-only-text">
