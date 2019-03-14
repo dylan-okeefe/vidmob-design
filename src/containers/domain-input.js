@@ -6,7 +6,7 @@ export default class DomainInput extends Component{
         super(props)
 
         this.state = {
-            domains: ['some', 'test', 'values']
+            domains: []
         }
     }
 
@@ -37,6 +37,12 @@ export default class DomainInput extends Component{
 
     render(){
         let domainTextInput = this.props.emailIsSelected ? <input type="text" className="domain-text-input" onKeyDown={this.inputKeyDown} ref={ c => this.domainInput = c}/> : <input type="text" className="domain-text-input" onKeyDown={this.inputKeyDown} ref={ c => this.domainInput = c} disabled/>
+        if(this.state.domains.length === 0 && this.props.emailIsSelected){
+            domainTextInput = <input type="text" className="domain-text-input-always-show" placeholder="Enter one or more domain..." onKeyDown={this.inputKeyDown} ref={ c => this.domainInput = c}/>
+            if(this.props.emailIsSelected === false){
+                domainTextInput = <input type="text" className="domain-text-input-always-show" placeholder="Enter one or more domain..." onKeyDown={this.inputKeyDown} ref={ c => this.domainInput = c} disabled/>
+            }
+        }
         return(
             <div className="domain-input">
                 <ul className="domain-list">

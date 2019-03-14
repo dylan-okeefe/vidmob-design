@@ -695,11 +695,20 @@ body{
 
       }
 
+      .domain-input:hover{
+        .domain-text-input{
+          display: inline;
+        }
+      }
+
+      
+
       .domain-input{
 
         width: 340px;
         border-radius: 2px;
         border: solid 1px #e2e6eb;
+        min-height: 54px;
 
         .domain-list{
           display: flex;
@@ -786,6 +795,22 @@ body{
 
         }
 
+        .domain-text-input:focus{
+          display: inline;
+        }
+
+        .domain-text-input-always-show{
+          display: inline;
+          width: 150px;
+          height: 30px;
+          border: none;
+          margin-top: 10px;
+          margin-bottom: 10px;
+          padding-left: 15px;
+          margin-left: 15px;
+          outline: none;
+        }
+
         .domain-text-input{
 
           width: 135px;
@@ -794,32 +819,14 @@ body{
           margin-top: 10px;
           margin-bottom: 10px;
           padding-left: 15px;
+          display: none;
+          outline: none;
 
         }
 
         .domain-text-input:nth-child(odd){
           margin-left: 15px;
         }
-
-        // width: 336px;
-        // height: 46px;
-        // border-radius: 2px;
-        // border: solid 1px #e2e6eb;
-
-        
-
-        // .domain-text-input{
-
-        //   width: 321px;
-        //   height: 46px;
-        //   border-radius: 2px;
-        //   border: solid 1px #e2e6eb;
-
-        //   padding-left: 15px;
-        //   font-family: 'proximanova', sans-serif;
-        //   font-size: 14px;
-
-        // }
         
       }
 

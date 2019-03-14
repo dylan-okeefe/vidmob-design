@@ -11,8 +11,8 @@ export default class Root extends Component {
 
         this.state = {
             existingCompany: false,
-            // modeJoin: false,
-            modeJoin: true, //just for testing
+            modeJoin: false,
+            // modeJoin: true, //just for testing
             firstName: '',
             lastName: '',
             displayName: '',
