@@ -2,19 +2,16 @@ import React, { Component } from 'react'
 import clear from '../assets/ic-clear.svg'
 import emailGeneric from '../assets/ic-large-email-generic.svg'
 
-export default class FamiliarAlert extends Component{
+export default class InvitedAlert extends Component{
 
     constructor(props){
         super(props);
-
-
-
     }
 
-    renderPrompt(){
+    render(){
         return (
             <div className="familiar-alert">
-            <span onClick={this.props.onFamiliarAlertClose()}>
+            <span onClick={this.props.onInvitedAlertClose}>
                 <div className="close">
                     <div className="close-text">
                         Close

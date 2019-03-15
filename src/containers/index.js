@@ -8,25 +8,42 @@ export default class Root extends Component {
         super(props)
 
         this.state = {
-            existingCompany: false
+            emailEntered: false,
+            existingCompany: false,
+            modeJoin: false,
+            // modeJoin: true, //just for testing
+            email: '',
+            firstName: '',
+            lastName: '',
+            displayName: '',
+            password: '',
+            companyName: '',
+            inviteOnly: false,
+            anyEmail: false,
+            domains: []
         }
 
-        this.isExistingCompany = this.isExistingCompany.bind(this);
     }
 
-    isExistingCompany(){
+    isExistingCompany = () => {
         this.setState({existingCompany: true});
     }
 
     render() {
+        let emailForm = <EmailForm isExistingCompany = {this.isExistingCompany} />
         return (
             <div className="background">
                 <Header />
-                <EmailForm isExistingCompany = {this.isExistingCompany} />
+                {/* <EmailForm isExistingCompany = {this.isExistingCompany} /> */}
+                { this.state.emailEntered === false && this.renderEmailForm() }
 
                 <button className="chat-button"></button>
             </div>
         )
+    }
+
+    renderEmailForm(){
+        return(<EmailForm isExistingCompany = {this.isExistingCompany} />)
     }
 
 }

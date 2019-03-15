@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
-import FamiliarAlert from './familiar-alert'
+import InvitedAlert from './invited-alert'
+import PersonalAlert from './personal-alert'
 
 export default class Form extends Component {
     constructor(props){
@@ -8,39 +9,66 @@ export default class Form extends Component {
         this.state = {
             email: '',
             submitted: false,
-            familiarAlertDisplay: false,
-            alreadyTaken: false
+            alreadyInvited: false,
+            // alreadyInvited:true, //for testing
+            alreadySignedUp: false,
+            personalEmail: false,
+            // personalEmail: true, //for testing
+            continuePersonal: false
         }
 
-        this.onEmailChange = this.onEmailChange.bind(this);
-        this.onSubmit = this.onSubmit.bind(this);
-        this.onFamiliarAlertClose = this.onFamiliarAlertClose.bind(this);
+        
 
     }
 
-    onEmailChange(e){
+    onPersonalEmailConfirm = () => {
+        this.setState({personalEmail: false})
+        this.setState({continuePersonal: true});
+    }
+
+    onPersonalEmailBack = () => {
+        this.setState({personalEmail: false})
+    }
+
+    onEmailChange = (e) => {
         this.setState({ email: e.target.value })
 
-        if(e.target.value === 'used@email.com'){
-            this.setState({alreadyTaken: true})
-        } else {
-            this.setState({alreadyTaken: false})
-        }
     }
 
-    onSubmit(e){
+    onInvitedAlertClose = () => {
+        this.setState({alreadyInvited: false});
+    }
+
+
+    onButtonPress = (e) => {
+        console.log(this.state)
         e.preventDefault();
-        this.setState({familiarAlertDisplay: true});
+        if(this.state.email === 'invited@email.com'){
+            console.log('woo')
+            this.setState({alreadyInvited: true})
+        } else {
+            this.setState({alreadyInvited: false})
+        }
 
-    }
+        if(this.state.email === 'user@email.com'){
+            this.setState({alreadySignedUp: true})
+        } else {
+            this.setState({alreadySignedUp: false})
+        }
 
-    onFamiliarAlertClose(){
-        this.setState({familiarAlertDisplay: false});
+        if(this.state.email === 'user@personal.com'){
+            if(this.state.continuePersonal){
+                
+            } else {
+                this.setState({personalEmail: true})
+            }
+        } else {
+            this.setState({personalEmail: false})
+        }
+
     }
 
     render() {
-        let displayAlert = this.state.familiarAlertDisplay ? <FamiliarAlert onFamiliarAlertClose = {this.onFamiliarAlertClose }/> : null
-        let displayOverlay = this.state.familiarAlertDisplay ? <div className="alert-overlay"></div> : null
         return (
             <div className="form">
                 <div className="form-content">
@@ -56,7 +84,7 @@ export default class Form extends Component {
                             <label>
                                 <input type="text" placeholder="name@company.com" className="email-input" value={this.state.email} onChange={this.onEmailChange}/>
                             </label>
-                            <button type="submit" value="Next" className="email-input-next">
+                            <button type="submit" value="Next" className="email-input-next" onClick={this.onButtonPress}>
                                 <span className="next-button-text">
                                     Next
                                 </span>
@@ -64,12 +92,15 @@ export default class Form extends Component {
                         </form>
                     </div>
                 </div>
-                {displayAlert}
-                {displayOverlay}
-                {this.renderPersonal()}
-                <div className="alert-overlay"></div>
+                { this.state.alreadyInvited && this.renderInvited() }
+                { this.state.alreadyInvited || this.state.personalEmail ? <div className="alert-overlay"></div> : null}
+                { this.state.personalEmail && this.renderPersonal() }
             </div>
         )
+    }
+
+    renderInvited(){
+        return <InvitedAlert onInvitedAlertClose = {this.onInvitedAlertClose }/>;
     }
 
     renderEmailTakenAlert(){
@@ -83,28 +114,7 @@ export default class Form extends Component {
     }
 
     renderPersonal(){
-        return(
-            <div className="personal-alert">
-                <h2 className="personal-header">
-                    That looks lke a personal email
-                </h2>
-                <div className="personal-text">
-                    Press continue to create a new team, or go back to try finding your team instead.
-                </div>
-                <div className="personal-buttons">
-                    <button type="submit" value="Next" className="personal-button-back">
-                                <span className="personal-button-back-text">
-                                    Back
-                                </span>
-                    </button>
-                    <button type="submit" value="Next" className="personal-button-continue">
-                                <span className="personal-button-continue-text">
-                                    Continue
-                                </span>
-                    </button>
-                </div>
-            </div>
-        )
+        return <PersonalAlert onPersonalEmailConfirm= { this.onPersonalEmailConfirm } onPersonalEmailBack={ this.onPersonalEmailBack }/>
     }
 
 }
