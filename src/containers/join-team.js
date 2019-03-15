@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import Header from './header';
 
 export default class JoinTeam extends Component{
     constructor(props){
@@ -12,32 +11,27 @@ export default class JoinTeam extends Component{
             password: ''
         }
 
-        this.onFirstNameChange = this.onFirstNameChange.bind(this);
-        this.onLastNameChange = this.onLastNameChange.bind(this);
-        this.onDisplayNameChange = this.onDisplayNameChange.bind(this);
-        this.onPasswordChange = this.onPasswordChange.bind(this);
     }
 
-    onFirstNameChange(e){
+    onFirstNameChange = (e) => {
         this.setState({ firstName: e.target.value })
     }
 
-    onLastNameChange(e){
+    onLastNameChange = (e) => {
         this.setState({ lastName: e.target.value })
     }
 
-    onDisplayNameChange(e){
+    onDisplayNameChange= (e) => {
         this.setState({ displayName: e.target.value })
     }
 
-    onPasswordChange(e){
+    onPasswordChange = (e) => {
         this.setState({password: e.target.value})
     }
 
     render(){
         return(
-            <div className="background">
-                <Header />
+
                 <div className="join-team-form">
                     <div className="join-team-form-content">
                         <div className="join-team-prompt">
@@ -61,9 +55,6 @@ export default class JoinTeam extends Component{
                         </div>
                     </div>
                 </div>
-                <div className="terms-link">By selecting Sign Up, you agree to our <a href="/">Terms & Conditions</a></div>
-                <button className="chat-button"></button>
-            </div>
         )
     }
 }

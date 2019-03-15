@@ -13,31 +13,25 @@ export default class GetStarted extends Component{
             companyName: '',
         }
 
-        this.onFirstNameChange = this.onFirstNameChange.bind(this);
-        this.onLastNameChange = this.onLastNameChange.bind(this);
-        this.onDisplayNameChange = this.onDisplayNameChange.bind(this);
-        this.onPasswordChange = this.onPasswordChange.bind(this);
-        this.onCompanyNameChange = this.onCompanyNameChange.bind(this);
-        this.onSubmit = this.onSubmit.bind(this);
     }
 
-    onFirstNameChange(e){
+    onFirstNameChange = (e) => {
         this.setState({ firstName: e.target.value })
     }
 
-    onLastNameChange(e){
+    onLastNameChange = (e) => {
         this.setState({ lastName: e.target.value })
     }
 
-    onDisplayNameChange(e){
+    onDisplayNameChange = (e) => {
         this.setState({ displayName: e.target.value })
     }
 
-    onPasswordChange(e){
+    onPasswordChange = (e) => {
         this.setState({password: e.target.value})
     }
 
-    onCompanyNameChange(e){
+    onCompanyNameChange = (e) => {
         this.setState({companyName: e.target.value})
         if(e.target.value === 'Existing Company'){
             this.setState({existingCompany: true})
@@ -46,7 +40,7 @@ export default class GetStarted extends Component{
         }
     }
 
-    onSubmit(e){
+    onSubmit= (e) => {
         e.preventDefault();
         this.props.onGetStartedSubmit(this.state);
     }
@@ -69,7 +63,7 @@ export default class GetStarted extends Component{
                                 <input type="password" className="password" placeholder="Password" value={this.state.password} onChange={this.onPasswordChange}></input>
                                 <input type="text" className="company-name" placeholder="Company Name" value={this.state.companyName} onChange={this.onCompanyNameChange}></input>
                                 <div className="signup-button-div">
-                                    <button type="submit" value="Sign Up" className="get-started-signup">
+                                    <button type="submit" value="Sign Up" className="get-started-signup" disabled={ this.state.existingCompany ? true : false}>
                                         <span className="get-started-signup-text">
                                             Sign Up
                                         </span>

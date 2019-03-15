@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import radioSelected from '../assets/ct-radio-selected.svg';
 import radioDeactivated from '../assets/ct-radio-deactivated.svg';
-import TagInput from './domain-input';
+import DomainInput from './domain-input';
 
 export default class CompanySignup extends Component{
 
@@ -14,15 +14,13 @@ export default class CompanySignup extends Component{
             domains: []
         }
 
-        this.onSelectDomains = this.onSelectDomains.bind(this);
-        this.onSelectInviteOnly = this.onSelectInviteOnly.bind(this);
     }
 
-    onSelectDomains(e){
+    onSelectDomains = (e) => {
         this.setState({anyFromDomains: true, inviteOnly: false})
     }
 
-    onSelectInviteOnly(e){
+    onSelectInviteOnly = (e) => {
         this.setState({anyFromDomains: false, inviteOnly: true})
 
     }
@@ -32,10 +30,11 @@ export default class CompanySignup extends Component{
         this.setState({domains: domains});
     }
 
+    onSubmit = (e) => {
+        this.props.onCompanySignupSubmit(this.state);
+    }
+
     render(){
-        let anyEmailRadio = this.state.anyFromDomains ? <img src={radioSelected} className="radio-selected-email"></img> : <img src={radioDeactivated} onClick={this.onSelectDomains} className="radio-deactivated-email"/>
-        let inviteOnlyRadio = this.state.inviteOnly ? <img src={radioSelected} className="radio-selected-invite"></img> : <img src={radioDeactivated} onClick={this.onSelectInviteOnly} className="radio-deactivated-invite"/>
-        let domainTextInput = this.state.anyFromDomains ? <input type="text" placeholder="Enter one or more domain..." className="domain-text-input"></input> : <input type="text" placeholder="Enter one or more domain..." className="domain-text-input" disabled></input>
         return(
             <div className="company-signup-form">
                 <div className="company-signup-form-content">
@@ -45,23 +44,30 @@ export default class CompanySignup extends Component{
                     </div>
                     <div className="company-signup-input">
                         <div className="any-email">
-                            {anyEmailRadio}
-                            <div className="any-domain-text">
+                            <img 
+                                src={this.state.anyFromDomains ? radioSelected : radioDeactivated} 
+                                className={this.state.fromAnyDomains ? "radio-selected-email" : "radio-deactivated-email"} 
+                                onClick={this.onSelectDomains} 
+                                alt={this.state.anyFromDomains ? "radio selected" : "radio deactivated"}
+                            />
+                            <div className={this.state.anyFromDomains ? "any-domain-text-selected":"any-domain-text"}>
                                 Any email from my domains
                             </div>
                         </div>
-                        {/* <div className="domain-input"> */}
-                            {/* {domainTextInput} */}
-                            <TagInput emailIsSelected={this.state.anyFromDomains} onDomainArrChange={this.onDomainArrChange}/>
-                        {/* </div> */}
+                            <DomainInput emailIsSelected={this.state.anyFromDomains} onDomainArrChange={this.onDomainArrChange}/>
                         <div className="invite-only-input">
-                            {inviteOnlyRadio}
-                            <div className="invite-only-text">
+                            <img 
+                                src={this.state.inviteOnly ? radioSelected : radioDeactivated} 
+                                className={this.state.inviteOnly ? "radio-selected-invite" : "radio-deactivated-invite"} 
+                                onClick={this.onSelectInviteOnly}
+                                alt={this.state.inviteOnly ? "radio selected" : "radio deactivated"}
+                            />
+                            <div className={this.state.inviteOnly ? "invite-only-text-selected" : "invite-only-text"}>
                                 Invite only
                             </div>
                         </div>
                         <div className="company-signup-done-div">
-                            <button type="submit" value="Done" className="company-signup-done">
+                            <button type="submit" value="Done" className="company-signup-done" onClick={this.onSubmit} disabled={this.state.anyFromDomains && this.state.domains.length === 0 ? true : false}>
                                 <span className="company-signup-done-text">
                                     Done
                                 </span>

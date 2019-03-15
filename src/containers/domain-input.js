@@ -1,5 +1,4 @@
 import React, { Component } from 'react'
-import lineItemClose from '../assets/line-item-close.svg'
 
 export default class DomainInput extends Component{
     constructor(props){
@@ -36,13 +35,6 @@ export default class DomainInput extends Component{
 
 
     render(){
-        let domainTextInput = this.props.emailIsSelected ? <input type="text" className="domain-text-input" onKeyDown={this.inputKeyDown} ref={ c => this.domainInput = c}/> : <input type="text" className="domain-text-input" onKeyDown={this.inputKeyDown} ref={ c => this.domainInput = c} disabled/>
-        if(this.state.domains.length === 0 && this.props.emailIsSelected){
-            domainTextInput = <input type="text" className="domain-text-input-always-show" placeholder="Enter one or more domain..." onKeyDown={this.inputKeyDown} ref={ c => this.domainInput = c}/>
-            if(this.props.emailIsSelected === false){
-                domainTextInput = <input type="text" className="domain-text-input-always-show" placeholder="Enter one or more domain..." onKeyDown={this.inputKeyDown} ref={ c => this.domainInput = c} disabled/>
-            }
-        }
         return(
             <div className="domain-input">
                 <ul className="domain-list">
@@ -67,7 +59,15 @@ export default class DomainInput extends Component{
                             } 
                         )  
                     }
-                    {domainTextInput}
+                    <input 
+                        type="text" 
+                        className={this.state.domains.length === 0 ? 'domain-text-input-always-show' : 'domain-text-input'}
+                        placeholder={this.state.domains.length === 0 ? 'Enter one or more domain...' : ''}
+                        id={this.state.domains.length > 1 && this.state.domains.length%2 === 0 ? 'input-alone-bottom-row' : 'test'}
+                        onKeyDown={this.inputKeyDown} 
+                        ref={ c => this.domainInput = c} 
+                        disabled={this.props.emailIsSelected ? false : true}
+                    />
                 </ul>
             </div>
         )

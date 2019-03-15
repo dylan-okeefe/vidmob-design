@@ -4,10 +4,6 @@ import emailGeneric from '../assets/ic-large-email-generic.svg'
 
 export default class InvitedAlert extends Component{
 
-    constructor(props){
-        super(props);
-    }
-
     render(){
         return (
             <div className="familiar-alert">
@@ -16,11 +12,11 @@ export default class InvitedAlert extends Component{
                     <div className="close-text">
                         Close
                     </div>
-                    <img src={clear} className="close-x"></img>
+                    <img src={clear} className="close-x" alt="close x"></img>
                 </div>
             </span>
                 <div className="check-email-icon">
-                    <img src={emailGeneric} className="email-icon"></img>
+                    <img src={emailGeneric} className="email-icon" alt="email icon"></img>
                 </div>
                 <h2 className="familiar-header">
                     That looks familiar

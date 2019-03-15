@@ -130,7 +130,7 @@ body{
       background-color: #de5454;
       position: absolute;
       left: 101px;
-      top: 36px;
+      top: 32px;
       display: flex;
       flex-direction: row;
       justify-content: center;
@@ -191,6 +191,7 @@ body{
           padding-left: 15px;
           padding-bottom: 0;
           padding-top: 0;
+          outline: none;
   
         }
   
@@ -206,6 +207,7 @@ body{
           border-radius: 100px;
           border: solid 1px #e2e6eb;
           background-color: #2c9db7;
+          outline: none;
 
           .next-button-text{
             
@@ -363,9 +365,6 @@ body{
 
   .close{
 
-    // display: flex;
-    // flex-direction: row;
-    // justify-content: flex-end;
     display: flex;
     flex-direction: row;
     justify-content: flex-end;
@@ -401,7 +400,6 @@ body{
     display: flex;
     flex-direction: row;
     justify-content: center;
-    // align-content: center;
     margin-top: 40px;
 
     .email-icon{
@@ -519,6 +517,7 @@ body{
         padding-left: 15px;
         margin-right: 10px;
         margin-bottom: 10px;
+        outline: none;
       }
 
       input:placeholder-shown {
@@ -532,6 +531,7 @@ body{
         padding-left: 15px;
         font-family: 'proximanova', sans-serif;
         font-size: 14px;
+        outline: none;
       }
 
       .password{
@@ -541,6 +541,7 @@ body{
         padding-left: 15px;
         font-family: 'proximanova', sans-serif;
         font-size: 14px;
+        outline: none;
       }
 
       .signup-button-div{
@@ -557,6 +558,7 @@ body{
         border-radius: 100px;
         border: solid 1px #e2e6eb;
         background-color: #2c9db7;
+        outline: none;
       }
 
       .join-team-signup-text{
@@ -701,6 +703,7 @@ body{
         padding-left: 15px;
         margin-right: 10px;
         margin-bottom: 10px;
+        outline: none;
       }
 
       input:placeholder-shown {
@@ -714,6 +717,7 @@ body{
         padding-left: 15px;
         font-family: 'proximanova', sans-serif;
         font-size: 14px;
+        outline: none;
       }
 
       .password{
@@ -723,6 +727,7 @@ body{
         padding-left: 15px;
         font-family: 'proximanova', sans-serif;
         font-size: 14px;
+        outline: none;
       }
 
       .company-name{
@@ -732,6 +737,7 @@ body{
         padding-left: 15px;
         font-family: 'proximanova', sans-serif;
         font-size: 14px;
+        outline: none;
       }
 
       .signup-button-div{
@@ -748,6 +754,7 @@ body{
         border-radius: 100px;
         border: solid 1px #e2e6eb;
         background-color: #2c9db7;
+        outline: none;
       }
 
       .get-started-signup-text{
@@ -816,7 +823,6 @@ body{
 
 .company-signup-form{
   width: 400px;
-  // height: 428px;
   border-radius: 2px;
   box-shadow: 0 12px 24px 0 rgba(0 , 0, 0, 0.2);
   background-color: #ffffff;
@@ -890,7 +896,12 @@ body{
         margin-bottom: 22px;
 
         .any-domain-text{
+          font-size: 14px;
+        }
 
+        .any-domain-text-selected{
+          font-size: 14px;
+          font-weight: bold;
         }
 
       }
@@ -989,9 +1000,13 @@ body{
           }
 
           .last-line-item{
-            margin-bottom: 11px;
+            margin-bottom: 10px;
           }
 
+        }
+
+        #input-alone-bottom-row{
+          margin-top: 0px;
         }
 
         .domain-text-input:focus{
@@ -1039,7 +1054,12 @@ body{
         margin-bottom: 30px;
 
         .invite-only-text{
+          font-size: 14px;
+        }
 
+        .invite-only-text-selected{
+          font-size: 14px;
+          font-weight: bold;
         }
 
       }
@@ -1060,6 +1080,7 @@ body{
         border-radius: 100px;
         border: solid 1px #e2e6eb;
         background-color: #2c9db7;
+        outline: none;
 
         .company-signup-done-text{
 

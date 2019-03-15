@@ -10,20 +10,17 @@ export default class Form extends Component {
             email: '',
             submitted: false,
             alreadyInvited: false,
-            // alreadyInvited:true, //for testing
             alreadySignedUp: false,
             personalEmail: false,
-            // personalEmail: true, //for testing
             continuePersonal: false
         }
-
-        
 
     }
 
     onPersonalEmailConfirm = () => {
         this.setState({personalEmail: false})
-        this.setState({continuePersonal: true});
+        this.setState({continuePersonal: true})
+        this.props.onEmailEntered(this.state)
     }
 
     onPersonalEmailBack = () => {
@@ -31,7 +28,9 @@ export default class Form extends Component {
     }
 
     onEmailChange = (e) => {
+        console.log(this.props)
         this.setState({ email: e.target.value })
+        this.setState({alreadySignedUp: false})
 
     }
 
@@ -41,14 +40,13 @@ export default class Form extends Component {
 
 
     onButtonPress = (e) => {
-        // console.log(this.state)
         e.preventDefault();
         switch(this.state.email){
             case 'invited@email.com':
                 this.setState({alreadyInvited: true})
                 break;
             case 'user@email.com':
-                this.setState({alreadyInvited: true})
+                this.setState({alreadySignedUp: true})
                 break;
             case 'user@personal.com':
                 if(this.state.continuePersonal){
@@ -71,10 +69,8 @@ export default class Form extends Component {
                         <h2>Get Started on VidMob</h2>
                         <p>Enter your work email.</p>
                     </div>
-                    {/* <div className="email-taken-error">
-                    </div> */}
                     <div className="input">
-                        {this.state.alreadyTaken && this.renderEmailTakenAlert()}
+                        {this.state.alreadySignedUp && this.renderEmailTakenAlert()}
                         <form onSubmit={this.onSubmit}>
                             <label>
                                 <input type="text" placeholder="name@company.com" className="email-input" value={this.state.email} onChange={this.onEmailChange}/>
@@ -90,6 +86,7 @@ export default class Form extends Component {
                 { this.state.alreadyInvited && this.renderInvited() }
                 { this.state.alreadyInvited || this.state.personalEmail ? <div className="alert-overlay"></div> : null}
                 { this.state.personalEmail && this.renderPersonal() }
+
             </div>
         )
     }
