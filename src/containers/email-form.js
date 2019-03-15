@@ -41,29 +41,24 @@ export default class Form extends Component {
 
 
     onButtonPress = (e) => {
-        console.log(this.state)
+        // console.log(this.state)
         e.preventDefault();
-        if(this.state.email === 'invited@email.com'){
-            console.log('woo')
-            this.setState({alreadyInvited: true})
-        } else {
-            this.setState({alreadyInvited: false})
-        }
-
-        if(this.state.email === 'user@email.com'){
-            this.setState({alreadySignedUp: true})
-        } else {
-            this.setState({alreadySignedUp: false})
-        }
-
-        if(this.state.email === 'user@personal.com'){
-            if(this.state.continuePersonal){
-                
-            } else {
-                this.setState({personalEmail: true})
-            }
-        } else {
-            this.setState({personalEmail: false})
+        switch(this.state.email){
+            case 'invited@email.com':
+                this.setState({alreadyInvited: true})
+                break;
+            case 'user@email.com':
+                this.setState({alreadyInvited: true})
+                break;
+            case 'user@personal.com':
+                if(this.state.continuePersonal){
+                    this.props.onEmailEntered(this.state)
+                } else {
+                    this.setState({personalEmail: true})
+                };
+                break;
+            default:
+                this.props.onEmailEntered(this.state)   
         }
 
     }

@@ -29,6 +29,10 @@ export default class Root extends Component {
         this.setState({existingCompany: true});
     }
 
+    onEmailEntered = (childState) => {
+        console.log(childState, "THIS BUBBLED UP");
+    }
+
     render() {
         let emailForm = <EmailForm isExistingCompany = {this.isExistingCompany} />
         return (
@@ -43,7 +47,7 @@ export default class Root extends Component {
     }
 
     renderEmailForm(){
-        return(<EmailForm isExistingCompany = {this.isExistingCompany} />)
+        return(<EmailForm onEmailEntered={this.onEmailEntered}/>)
     }
 
 }
