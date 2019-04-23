@@ -12,7 +12,8 @@ export default class Form extends Component {
             alreadyInvited: false,
             alreadySignedUp: false,
             personalEmail: false,
-            continuePersonal: false
+            continuePersonal: false,
+            canNotContinue: true
         }
 
     }
@@ -28,7 +29,6 @@ export default class Form extends Component {
     }
 
     onEmailChange = (e) => {
-        console.log(this.props)
         this.setState({ email: e.target.value })
         this.setState({alreadySignedUp: false})
 
@@ -41,23 +41,41 @@ export default class Form extends Component {
 
     onButtonPress = (e) => {
         e.preventDefault();
-        switch(this.state.email){
-            case 'invited@email.com':
-                this.setState({alreadyInvited: true})
-                break;
-            case 'user@email.com':
-                this.setState({alreadySignedUp: true})
-                break;
-            case 'user@personal.com':
-                if(this.state.continuePersonal){
-                    this.props.onEmailEntered(this.state)
+
+        fetch('https://api-dev.vidmob.com/VidMob/api/noauth/v1/signupPrevalidation?email=' + this.state.email)
+            .then(response => {
+                if(response.status === 409){
+                    return Promise.reject()
+                } else if ( response.status === 200){
+                    return fetch('https://api-dev.vidmob.com/VidMob/api/noauth/v1/findMyTeam?email=' + this.state.email)
+                }
+            })
+            .then(findTeamResponse => findTeamResponse.json())
+            .then(responseJson => {
+                if(responseJson.result.isInWhitelist){
+                    const inviteEmails = { email: [] };
+                    inviteEmails.email.push(this.state.email);
+                    return fetch('https://api-dev.vidmob.com/VidMob/api/noauth/v1/findMyTeam', {
+                        method: "POST",
+                        headers: {
+                            "Content-Type": "application/json"
+                        },
+                        body: JSON.stringify(inviteEmails) 
+                    })
                 } else {
-                    this.setState({personalEmail: true})
-                };
-                break;
-            default:
-                this.props.onEmailEntered(this.state)   
-        }
+                    this.props.onEmailEntered(this.state)
+                    return Promise.reject()
+                }
+                
+            })
+            .then(response => response.json())
+            .then(responseJson => {
+                if(responseJson.result.message === "vidmob.result.inviteSent"){
+                    this.setState({alreadyInvited: true})
+                }
+                console.log(responseJson)
+            })
+
 
     }
 
@@ -75,7 +93,7 @@ export default class Form extends Component {
                             <label>
                                 <input type="text" placeholder="name@company.com" className="email-input" value={this.state.email} onChange={this.onEmailChange}/>
                             </label>
-                            <button type="submit" value="Next" className="email-input-next" onClick={this.onButtonPress}>
+                            <button type="submit" value="Next" className="email-input-next" onClick={this.onButtonPress} >
                                 <span className="next-button-text">
                                     Next
                                 </span>

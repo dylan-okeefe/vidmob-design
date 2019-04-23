@@ -10,7 +10,6 @@ export default class DomainInput extends Component{
     }
 
     inputKeyDown = (e) => {
-        console.log(this.props)
         const val = e.target.value;
         if(e.key === 'Enter' && val){
             if(this.state.domains.find(domain => domain.toLowerCase() === val.toLowerCase())){

@@ -33,16 +33,48 @@ export default class GetStarted extends Component{
 
     onCompanyNameChange = (e) => {
         this.setState({companyName: e.target.value})
-        if(e.target.value === 'Existing Company'){
-            this.setState({existingCompany: true})
-        } else {
-            this.setState({existingCompany: false});
-        }
+        this.setState({existingCompany: false});
     }
 
     onSubmit= (e) => {
         e.preventDefault();
-        this.props.onGetStartedSubmit(this.state);
+
+        if( 
+            this.state.firstName === '' ||
+            this.state.lastName === '' ||
+            this.state.password === ''
+        ) { return }
+
+        fetch('https://api-dev.vidmob.com/VidMob/api/noauth/v1/signupPrevalidation?businessName=' + this.state.companyName)
+            .then(response => {
+                if(response.status === 409){
+                    this.setState({existingCompany: true})
+                } else {
+                    const newUser = {
+                        firstName: this.state.firstName,
+                        lastName: this.state.lastName,
+                        email: this.props.email,
+                        password: this.state.password
+                    }
+                    if(this.state.displayName !== '') { newUser.displayName = this.state.displayName }
+                    if(this.state.companyName !== '') { newUser.businessName = this.state.companyName }
+
+                    return fetch('https://api-dev.vidmob.com/VidMob/api/noauth/v1/signup', {
+                            method: 'POST',
+                            headers: {
+                                "Content-Type": "application/json"
+                            },
+                            body: JSON.stringify(newUser) 
+                        }   
+                    )
+                }
+            })
+            .then(response => response.json())
+            .then(responseJson => {
+                let accessToken = responseJson.result.access_token
+                let id = responseJson.result.id
+                this.props.onGetStartedSubmit(this.state, accessToken, id);
+            })
     }
 
 

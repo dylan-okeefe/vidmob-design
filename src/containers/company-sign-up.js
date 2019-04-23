@@ -26,7 +26,6 @@ export default class CompanySignup extends Component{
     }
 
     onDomainArrChange = (domains) => {
-        console.log(domains)
         this.setState({domains: domains});
     }
 
